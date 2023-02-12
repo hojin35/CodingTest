@@ -1,0 +1,43 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+using namespace std;
+
+int main()
+{
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int n;
+	cin >> n;
+
+	cout << fixed;
+	cout.precision(3);
+	while (n--)
+	{
+		double numOfIndex = 0;
+		double sum = 0;
+		double avg = 0;
+		double result = 0;
+		vector<double> arr;
+		cin >> numOfIndex;
+		for (int i = 0; i < numOfIndex; i++)
+		{
+			double temp;
+			cin >> temp;
+			sum += temp;
+			arr.push_back(temp);
+		}
+		avg = sum / numOfIndex;
+		for (double score : arr)
+		{
+			if (score > avg)
+				result++;
+		}
+		double r = (double)result / numOfIndex * 100 ;
+		
+		cout << r << '%' << '\n';
+	}
+	return 0;
+}
