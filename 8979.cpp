@@ -9,14 +9,13 @@ int main()
 	cin >> n >> target;
 
 	target -= 1;
-	vector<int> gold(n,0);
-	vector<int> silver(n,0);
-	vector<int> bronze(n,0);
-	vector<bool> check(n,0);
-	int x,a, b, c;
+	vector<int> gold(n, 0);
+	vector<int> silver(n, 0);
+	vector<int> bronze(n, 0);
+	int x, a, b, c;
 	for (int i = 0; i < n; i++)
 	{
-		cin >>x>> a >> b >> c;
+		cin >> x >> a >> b >> c;
 		x -= 1;
 		gold[x] = a;
 		silver[x] = b;
@@ -25,47 +24,26 @@ int main()
 	int count = 0;
 	for (int i = 0; i < n; i++)
 	{
-		if (check[i] != true)
+		if (gold[i] > gold[target])
 		{
-			if (gold[i] > gold[target])
-			{
-				check[i] = true;
-				count++;
-			}
-			if (gold[i] < gold[target])
-			{
-				check[i] = true;
-			}
+			count++;
 		}
-	}
-	for (int i = 0; i < n; i++)
-	{
-		if (check[i] != true)
+		else if (gold[i] < gold[target])
 		{
-			if (silver[i] > silver[target])
-			{
-				check[i] = true;
-				count++;
-			}
-			if (silver[i] < silver[target])
-			{
-				check[i] = true;
-			}
 		}
-	}
-	for (int i = 0; i < n; i++)
-	{
-		if (check[i] != true)
+		else if (silver[i] > silver[target])
 		{
-			if (bronze[i] > bronze[target])
-			{
-				check[i] = true;
-				count++;
-			}
-			if (bronze[i] < bronze[target])
-			{
-				check[i] = true;
-			}
+			count++;
+		}
+		else if (silver[i] < silver[target])
+		{
+		}
+		else if (bronze[i] > bronze[target])
+		{
+			count++;
+		}
+		else if (bronze[i] < bronze[target])
+		{
 		}
 	}
 	cout << count + 1;
